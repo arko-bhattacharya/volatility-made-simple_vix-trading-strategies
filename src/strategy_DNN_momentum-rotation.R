@@ -1,3 +1,6 @@
+## For strategy details refer to
+## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+##  
 ## > load('../data/main_data.RData')
 ## >
 ## > head(data)
@@ -108,19 +111,31 @@ strategy <- function(data)
     
                                         # returns xiv
     returns_xiv <- ((sell_price_xiv - buy_price_xiv)/ buy_price_xiv)
-    names(returns_xiv) <- buy_xiv_dates
+    returns_xiv <- data.frame(returns = returns_xiv,
+                              buy_date = as.POSIXct(buy_xiv_dates),
+                              sell_date = as.POSIXct(sell_xiv_dates),
+                              stringsAsFactors = FALSE)    
                                         # returns vxx
     returns_vxx <- ((sell_price_vxx - buy_price_vxx)/ buy_price_vxx)
-    names(returns_vxx) <- buy_vxx_dates
+    returns_vxx <- data.frame(returns = returns_vxx,
+                              buy_date = as.POSIXct(buy_vxx_dates),
+                              sell_date = as.POSIXct(sell_vxx_dates),
+                              stringsAsFactors = FALSE)    
                                         # returns ziv
     returns_ziv <- ((sell_price_ziv - buy_price_ziv)/ buy_price_ziv)
-    names(returns_ziv) <- buy_ziv_dates
+    returns_ziv <- data.frame(returns = returns_ziv,
+                              buy_date = as.POSIXct(buy_ziv_dates),
+                              sell_date = as.POSIXct(sell_ziv_dates),
+                              stringsAsFactors = FALSE)    
                                         # returns vxz
     returns_vxz <- ((sell_price_vxz - buy_price_vxz)/ buy_price_vxz)
-    names(returns_vxz) <- buy_vxz_dates
+    returns_vxz <- data.frame(returns = returns_vxz,
+                              buy_date = as.POSIXct(buy_vxz_dates),
+                              sell_date = as.POSIXct(sell_vxz_dates),
+                              stringsAsFactors = FALSE)    
     
-    ret_val <- c(returns_xiv, returns_vxx, returns_ziv, returns_vxz)
-    ret_val <- ret_val[order(as.POSIXct(names(ret_val)))]
+    ret_val <- rbind(returns_xiv, returns_vxx, returns_ziv, returns_vxz)
+    ret_val <- ret_val[order(ret_val$buy_date),]
 
     return(ret_val)
   }
