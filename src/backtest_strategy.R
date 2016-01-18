@@ -1,12 +1,15 @@
+## This is the script that runs the strategies.
+## Every strategy is a function which takes in data and gives us an
+## object which shows us the returns generated using that strategy.
 #!/usr/bin/env Rscript
 rm(list = ls())
 
 usage = paste('Usage: ./backtest_strategy.R', 'INPUT: /strategy_file_path',
-  'OUTPUT: /strategy_backtest_result', sep = '\n')
+  'OUTPUT: /strategy_backtest_result', sep = ' ')
 
 ## read inputs
 cargs <- commandArgs(trailingOnly = TRUE)
-if (length(cargs) != 1) {
+if (length(cargs) != 2) {
   print(cat(usage))
 } else {
   file_path <- cargs[[1]]
