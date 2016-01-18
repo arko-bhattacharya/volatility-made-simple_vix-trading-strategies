@@ -1,3 +1,6 @@
+## For strategy details refer to
+## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+##  
 ## > load('../data/main_data.RData')
 ## >
 ## > head(data)
@@ -73,6 +76,7 @@ strategy <- function(data)
 
                                         # retrns
     ret_val <- (((sell_price) - (buy_price))/(buy_price))
-    names(ret_val) <- buy_date
+    ret_val <- data.frame(returns = ret_val, buy_date = buy_date, sell_date = sell_date,
+                          stringsAsFactors = FALSE)
     return(ret_val)
   }
