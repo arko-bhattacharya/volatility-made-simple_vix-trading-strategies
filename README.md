@@ -11,7 +11,12 @@ made simple.
 
 2. ./data: This folder contains the raw time series from various
 sources (yahoo fin, google fin, aquifer) and the final assimilated
-data set
+data set.**
 
 3. ./strategy_results: This folder contains the returns time series
-for each stategy after it is back tested on the final data set.
+for each stategy after it is back tested on the final data set.**
+
+
+** While setting up the local coppy for the first time this
+folder has to created in the main folder where the '/src' folder is
+placed.
