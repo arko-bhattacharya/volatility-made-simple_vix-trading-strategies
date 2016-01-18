@@ -1,4 +1,9 @@
 rm(list = ls()); library(zoo)
+## This script is used to assimilate various time series data.  Some
+## of these time series have been downloaded from yahoo finance while
+## a few have been provided by aquifer.  The raw data sets are read
+## from the '../data' folder and the final assimilated data set is
+## also stored in '../data' folder.
 
                                         # read main data
 main_data <- read.csv(file = '../data/VIXdata_20150714.csv', header = TRUE, sep = ' ',
