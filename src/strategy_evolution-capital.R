@@ -51,6 +51,10 @@ strategy <- function(data)
     tmp[which((data$vix > data$UX1) & (data$UX1 > data$UX2))] <- 1
     vxx_pos <- tmp
     for(i in 2:length(tmp)) if(is.na(tmp[i]) && (tmp[i - 1] %in% 1)) vxx_pos[i] <- 1
+    if(is.na(vxx_pos[length(vxx_pos) - 1]) & (vxx_pos[length(vxx_pos)] %in% 1))
+      {
+        vxx_pos[length(vxx_pos)] <- NA
+      }
     runs <- rle(is.na(vxx_pos))
     vxx_pos <- unlist(mapply(FUN = convertRun, runs[['values']], runs[['lengths']]))
 
@@ -64,6 +68,10 @@ strategy <- function(data)
     tmp[which(((data$vix < data$UX1) & (data$UX1 < data$UX2)) & (ry > ry_mean_20))] <- 1
     xiv_pos <- tmp
     for(i in 2:length(tmp)) if(is.na(tmp[i]) && (tmp[i - 1] %in% 1)) xiv_pos[i] <- 1
+        if(is.na(xiv_pos[length(xiv_pos) - 1]) & (xiv_pos[length(xiv_pos)] %in% 1))
+      {
+        xiv_pos[length(xiv_pos)] <- NA
+      }
     runs <- rle(is.na(xiv_pos))
     xiv_pos <- unlist(mapply(FUN = convertRun, runs[['values']], runs[['lengths']]))
 
