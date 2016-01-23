@@ -38,6 +38,5 @@ load('../data/main_data.RData')
 result <- strategy(data = data)
 
 ## store result
-op_file_path <- gsub(pattern = 'NULL', replacement = '', x = op_file_path)
 save(result, file = op_file_path)
 print('Back test completed')
