@@ -17,11 +17,15 @@ vix <- read.csv(file = '../data/y_VIX.csv', stringsAsFactors = FALSE)
 vix$Date <- as.POSIXct(vix$Date)
 vix <- zoo(x = vix$Adj.Close, order.by = vix$Date)
 
-
                                         # read S&P 500 index
 snp <- read.csv(file = '../data/y_SnP.csv', stringsAsFactors = FALSE)
 snp$Date <- as.POSIXct(snp$Date)
 snp <- zoo(x = snp$Adj.Close, order.by = snp$Date)
+
+                                        # read SPY
+spy <- read.csv(file = '../data/y_SPY.csv', stringsAsFactors = FALSE)
+spy$Date <- as.POSIXct(spy$Date)
+spy <- zoo(x = spy$Adj.Close, order.by = spy$Date)
 
                                         # read XIV
 xiv <- read.csv(file = '../data/y_XIV.csv', stringsAsFactors = FALSE)
@@ -49,7 +53,7 @@ vxz$Date <- as.POSIXct(vxz$Date)
 vxz <- zoo(x = vxz$Adj.Close, order.by = vxz$Date)
 
                                         # merge data
-data <- merge.zoo(main_data, vix, snp, xiv, vxx, vxv, ziv, vxz, all = FALSE)
+data <- merge.zoo(main_data, vix, snp, xiv, vxx, vxv, ziv, vxz, spy, all = FALSE)
 data <- as.data.frame(data, stringsAsFactors = FALSE)
 data$date <- rownames(data); rownames(data) <- NULL
 data$date <- as.POSIXct(data$date)
