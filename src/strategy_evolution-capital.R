@@ -1,6 +1,36 @@
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Evolution Capital’s VIX Trading Strategy'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## - Go long VXX (long VIX) at the close when the VIX will close above
+## the front month VIX futures contract, and the front month will
+## close above the second month (VIX > VX1 > VX2).
+## - Go long XIV (inverse VIX) at the close when the VIX will close
+## below the front month VIX futures contract, the front month will
+## close below the second month, and the current roll yield is greater
+## than the 20-day average of the roll yield (VIX < VX1 < VX2 and RY >
+## 20-day RY).
+## - Hold positions until any of the above conditions are not met. Also,
+## move to cash at the close for a day whenever the following special
+## condition is met: the strategy is signaling a long XIV position,
+## but both SPY and the front month contract close up on the day
+## (something that usually doesn’t happen as they tend to move
+## opposite one another).
+##
 ## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
-##  
+## http://volatilitymadesimple.com/evolution-capitals-vix-trading-strategy/
+##
 ## > load('../data/main_data.RData')
 ## >
 ## > head(data)

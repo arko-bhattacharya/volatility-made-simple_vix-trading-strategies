@@ -1,5 +1,24 @@
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Comparing First and Second Month VIX Futures'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## Go long XIV (VXX) at today’s close when the front month VIX futures
+## contract will close below (above) the second month. Hold until a
+## change in position.
+##
 ## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## http://volatilitymadesimple.com/backtest-comparing-first-and-second-month-vix-futures/
 ##  
 ## > load('../data/main_data.RData')
 ## >

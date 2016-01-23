@@ -1,5 +1,25 @@
-## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## This is a function which implements www.volatilitymadesimple.com's
+## 'A Momentum Rotation Strategy for Trading VIX ETPs'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## The four ETPs traded are XIV, VXX, ZIV, and VXZ. Go long at the
+## close the ETP with the highest return over the last 83-days. If all
+## 83-day returns are negative, move to cash. Hold until a new ETP
+## signals a trade.
+##
+## For strategy details refer to:
+## http://volatilitymadesimple.com/a-momentum-rotation-strategy-for-trading-vix-etps/
 ##  
 ## > load('../data/main_data.RData')
 ## >

@@ -1,5 +1,24 @@
-## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Following the Trend in VIX ETPs: 10/100 day MA crossover'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## Go long XIV at the close when the 10-day simple moving average
+## (SMA) of XIV will close above the 100-day SMA, or move to cash when
+## it will close below. Hold until a change in position.
+##
+## For strategy details refer to:
+## http://volatilitymadesimple.com/following-the-trend-in-vix-etps/
 ##  
 ## > load('../data/main_data.RData')
 ## >

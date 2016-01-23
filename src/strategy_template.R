@@ -1,3 +1,23 @@
+## This is a function which implements www.volatilitymadesimple.com's
+## ''.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## 
+##
+## For strategy details refer to
+## 
+##
 ## > load('../data/main_data.RData')
 ## >
 ## > head(data)
@@ -22,7 +42,7 @@
 ##  $ ziv    : num  12.3 12.5 12.5 13.1 13.1 ...
 ##  $ vxz    : num  74.6 72.6 70.1 68.6 68 ...
 ##  $ date   : POSIXct, format: "2010-11-30" "2010-12-01" ...
-## > 
+## >
 strategy <- function(data)
   {
     buy_date <- 

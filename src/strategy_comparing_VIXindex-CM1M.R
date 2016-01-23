@@ -1,5 +1,25 @@
-## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Comparing the VIX Index to 1-Month Constant Maturity VIX Futures'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## Go long XIV at today’s close if the VIX index will close below the
+## 1-month constant maturity price of VIX futures, or go long if it
+## will close above. Hold until a change in position.
+##
+## For strategy details refer to:
+## http://volatilitymadesimple.com/backtest-comparing-the-vix-index-to-30-day-constant-
+## maturity-vix-futures/
 ##  
 ## > load('../data/main_data.RData')
 ## >

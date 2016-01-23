@@ -1,5 +1,27 @@
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Brute Force Optimization of VRP Strategy'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## Calculate the premium/discount of the VIX vs historical volatility:
+## 8-day average of the [VIX index – (4-day annualized standard
+## deviation of SPY)].
+## Short vol (long XIV) when the VIX is trading at a premium to
+## historical S&P 500 volatility, and long vol (long VXX) when it’s
+## trading at a discount.
+##
 ## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## http://volatilitymadesimple.com/brute-force-optimization-of-vrp-strategy/
 ##  
 ## > load('../data/main_data.RData')
 ## >

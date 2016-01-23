@@ -1,5 +1,30 @@
-## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Macro Investor’s VIX Trading Strategy'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+##
+## - At the close, calculate R, where R = average(VX1 / VIX, VX2 / VX1)
+## – 1. VX1 and VX 2 represent first and second month VIX futures,
+## and VIX the VIX spot.
+## - At the close, calculate the average value for R from inception up
+## to that moment in time.
+## - Go long XIV at the close if R > (average historical R * -1),
+## otherwise go long VXX. Hold until a change in position.
+##
+## For strategy details refer to:
+## http://volatilitymadesimple.com/macro-investors-vix-trading-strategy/
+## http://seekingalpha.com/instablog/5806521-macro-investor/3028385-new-svxy-strategy
 ##  
 ## > load('../data/main_data.RData')
 ## >

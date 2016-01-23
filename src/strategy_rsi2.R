@@ -1,5 +1,26 @@
+## This is a function which implements www.volatilitymadesimple.com's
+## 'A Twist on TradingMarkets.com’s RSI(2) Strategy'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## Divide the portfolio into 6 equal units. Buy 1 unit at the close if
+## the RSI(2) of XIV closes below 10. Add 2 additional units if XIV
+## closes below your entry price at any point. Add a final 3 units if
+## XIV closes below your second entry price at any point. Close all
+## positions when RSI(2) closes above 50.
+##
 ## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## http://volatilitymadesimple.com/a-twist-on-tradingmarkets-coms-rsi2-strategy/
 ##  
 ## > load('../data/main_data.RData')
 ## >

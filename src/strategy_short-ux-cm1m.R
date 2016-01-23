@@ -1,5 +1,16 @@
-## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## This function implements a strategy where one is short all the time
+## in a one month constant maturity vix index future.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
 ##  
 ## > load('../data/main_data.RData')
 ## >

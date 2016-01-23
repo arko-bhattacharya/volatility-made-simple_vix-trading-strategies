@@ -1,6 +1,26 @@
+## This is a function which implements www.volatilitymadesimple.com's
+## ''.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## Trade when the VIX:VXV ratio is sufficiently high or low, and
+## remaining in cash when the ratio was middling. Suggested ratio is
+## in the vicinity of 0.92/1.08 (i.e. long XIV when ratio < 0.92, long
+## VXX when ratio > 1.08)
+##
 ## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
-##  
+## http://volatilitymadesimple.com/vix-mores-vixvxv-ratio/
+## 
 ## > load('../data/main_data.RData')
 ## >
 ## > head(data)

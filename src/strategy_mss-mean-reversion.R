@@ -1,5 +1,29 @@
-## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## This is a function which implements www.volatilitymadesimple.com's
+## 'MarketSci’s Mean-Reversion VIX Trading Strategy'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## - Go long VXX/XIV at the close when the 10-day EMA of the VIX closed
+## under/over the 10-day SMA, and the average daily impact of the
+## term-structure was greater/less than zero, otherwise move to cash.
+## - 'Term-structure' loosely means roll yield, time decay, and all
+## other factors not directly related to immediate changes in the VIX
+## itself.
+##
+## For strategy details refer to:
+## http://volatilitymadesimple.com/marketscis-mean-reversion-vix-trading-strategy/
+## https://marketsci.wordpress.com/2012/04/12/strategy-2-for-trading-volatility-etps-
+## timing-the-vix/
 ##  
 ## > load('../data/main_data.RData')
 ## >

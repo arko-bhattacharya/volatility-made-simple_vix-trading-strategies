@@ -1,5 +1,28 @@
-## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Trading the Odds VRP Strategy'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## At the close, calculate the following -
+## 5-day average of the [VIX index – (2-day historical volatility of
+## SPY)]
+## Go long XIV at the close when the result of the above formula is
+## greater than 1.25, otherwise go long VXX. Hold until a change in
+## position.
+##
+## For strategy details refer to:
+## http://volatilitymadesimple.com/vix-trading-trading-the-odds-vrp-strategy/
+## http://www.tradingtheodds.com/2014/10/volatility-risk-premium-trading-volatility-part-i/
 ##  
 ## > load('../data/main_data.RData')
 ## >

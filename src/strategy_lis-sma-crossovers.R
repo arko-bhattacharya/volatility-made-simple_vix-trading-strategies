@@ -1,5 +1,24 @@
+## This is a function which implements www.volatilitymadesimple.com's
+## 'Logical-Invest’s Moving Average Crossover Strategy'.
+##
+## This function is designed assuming that it will be executed by the
+## ./src/backtest_strategy.R script. This script backtests the
+## strategy (function) on the main data set which is described below.
+##
+## The input to this function is the dataset which is specified
+## below. The path to the data file is ../data/main_data.R.
+##
+## This function returns a dataframe which tells us the buy dates,
+## sell dates indicated by the strategy over the period of back test
+## and the returns generated during each investment period.
+##
+## Rules of the strategy:
+## Go long XIV at today’s close if its 5-day simple moving average
+## (SMA) will close above its 15-day SMA. Hold until its 5-day SMA
+## will close below its 15-day SMA, and then move to cash.
+##
 ## For strategy details refer to
-## http://volatilitymadesimple.com/vix-trading-strategies-in-june/
+## http://volatilitymadesimple.com/backtest-logical-invests-moving-average-crossover-strategy/
 ##  
 ## > load('../data/main_data.RData')
 ## >
