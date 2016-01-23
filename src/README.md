@@ -16,19 +16,20 @@ time series of portfolio returns.
 This script runs from command line.
 
 An example run would be like -
-Rscript ./backtest_strategy.R [strategy path] [output path (return vector)]
+Rscript ./backtest_strategy.R [strategy path] [output storage path]
 
 * strategy_*.R 
 
 These are the strategy scripts.  
 
 The file name is the name of the strategy as per the June strategies
-listed on voltility-made-simple.
+listed on www.voltilitymadesimple.com.
+(http://volatilitymadesimple.com/vix-trading-strategies-in-june/)
 
-Each strategy is an independent function and can be ran using the
-backtest_strategy.R script
+Each strategy is an independent function and can be backtested using
+the backtest_strategy.R script
 
 eg: If one wants to run strategy_DFTB_sd.R, then the following command
-would give one the returns time series for this strategy.
+would backtest the strategy and store the results of the strategy-
 
 Rscript ./backtest_strategy.R ./strategy_DFTB_sd.R ../strategy_results/DFTB_sd.RData
