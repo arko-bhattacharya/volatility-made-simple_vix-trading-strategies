@@ -1,4 +1,4 @@
-## Volatility Made Simple: vix trading strategies
+## VIX trading strategies
 
 - This folder contains the scripts written from the website volatility
 made simple.
