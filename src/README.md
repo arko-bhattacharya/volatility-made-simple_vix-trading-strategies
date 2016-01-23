@@ -18,6 +18,12 @@ This script runs from command line.
 An example run would be like -
 Rscript ./backtest_strategy.R [strategy path] [output storage path]
 
+* backtest_all.R:
+This script is a meta script on backtest_strategy.R. Like the name
+suggests this script backtests all the strategies. For details about
+this script and its method of execution please refer to the comments
+in the script.
+
 * strategy_*.R 
 
 These are the strategy scripts.  
@@ -27,7 +33,10 @@ listed on www.voltilitymadesimple.com.
 (http://volatilitymadesimple.com/vix-trading-strategies-in-june/)
 
 Each strategy is an independent function and can be backtested using
-the backtest_strategy.R script
+the backtest_strategy.R script.
+
+For more details on each strategy please refer to the comments in the
+these scripts.
 
 eg: If one wants to run strategy_DFTB_sd.R, then the following command
 would backtest the strategy and store the results of the strategy-
