@@ -46,20 +46,20 @@ convertRun <- function (ofType, ofLength,
 
 strategy <- function(data)
   {
-                                        # 4 day look back annualised standard deviation of SPY
-    tmp <- zoo(x = data$spy, order.by = data$date)
-    sd_spy <- rollapply(data = tmp, 4, sd); sd_spy <- sd_spy*sqrt(250)
+                                        # 2 day look back annualised standard deviation of SPY
+    tmp <- zoo(x = data$UX_CM1M, order.by = data$date)
+    sd_spy <- rollapply(data = tmp, 2, sd); sd_spy <- sd_spy*sqrt(250)
                                         # calculating the premium/discount of VIX vs
                                         # historical volatility
     pd <- rollapply(data = zoo(x = (data$vix[(nrow(data) - length(sd_spy) + 1):nrow(data)] -
                       sd_spy),
                       order.by = data$date[(nrow(data) - length(sd_spy) + 1):nrow(data)]),
-                    8, mean)
+                    5, mean)
 
                                         # xiv position
     tmp <- rep(NA, length(pd))
-    tmp[which(pd > 0)] <- 1
-    xiv_pos <- tmp
+    tmp[which(pd > 1.25)] <- 1
+    xiv_pos <- as.numeric(tmp)
     for(i in 2:length(tmp)) if(is.na(tmp[i]) && (tmp[i - 1] %in% 1)) xiv_pos[i] <- 1
     if(is.na(xiv_pos[length(xiv_pos) - 1]) & (xiv_pos[length(xiv_pos)] %in% 1)) {
       xiv_pos[length(xiv_pos)] <- NA
@@ -69,7 +69,7 @@ strategy <- function(data)
 
                                         # vxx position
     tmp <- rep(NA, length(pd))
-    tmp[which(pd < 0)] <- 1
+    tmp[which(pd < 1.25)] <- 1
     vxx_pos <- tmp
     for(i in 2:length(tmp)) if(is.na(tmp[i]) && (tmp[i - 1] %in% 1)) vxx_pos[i] <- 1
     if(is.na(vxx_pos[length(vxx_pos) - 1]) & (vxx_pos[length(vxx_pos)] %in% 1))
