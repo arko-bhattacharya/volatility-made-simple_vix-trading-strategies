@@ -9,8 +9,9 @@ rm(list = ls())
 ## The analysis functions are imported from the
 ## './analyze_strategy_functions.R' script.
 ##
-## This script saves the strategy performance statistics data.frame of
-## all the strategies as a 'xtable' object in ../doc.
+## The strategy performance dataframe created by this script is used
+## by the ./report_strategy_performance.R script to generate the final
+## pdf report of the strategies.
 
                                         # load strategy performance functions
 source('./analyze_strategy_functions.R')
@@ -26,10 +27,12 @@ strategy_names <- gsub(pattern = '_', replacement = ' ', x = strategy_names)
 load('../data/main_data.RData')
 m_data <- data; rm(data)
 sim_range <- as.numeric(m_data$date[nrow(m_data)] - m_data$date[1])
+
+                                        # get S&P 500 time series
+data_snp <- m_data$snp; names(data_snp) <- m_data$date
 rm(m_data); gc()
 
                                         # get strategy performance statistics
-k = files[12]
 strat_results <- lapply(X = files,
                         FUN = function(k)
                         {
@@ -37,19 +40,15 @@ strat_results <- lapply(X = files,
                           ip$buy_date <- as.POSIXct(ip$buy_date)
                           ip$sell_date <- as.POSIXct(ip$sell_date)
                           op <- c(get_total_ret(data = ip), get_avg_ret(data = ip),
-                                  get_sharpe_ratio(data = ip),
-                                  ## get_max_drawdown(data = ip),
-                                  ## get_ulcer_performance_index(ip),
-                                  ## get_cor_with_snp(ip),
-                                  ## get_best_month_ret(ip), get_worst_month_ret(ip),
+                                  get_sharpe_ratio(data = ip), get_max_drawdown(data = ip),
+                                  get_upi(data = ip),
+                                  get_cor_with_snp(data = ip),
                                   get_best_return(data = ip), get_worst_return(data = ip),
                                   get_hit_rate(data = ip), get_trades_per_year(data = ip))
-                          names(op) <- c('Total return (pa)',
-                                         'Average return (pa)',
-                                         'Sharpe ratio',
-                                         ## 'Max drawdown',
-                                         ## 'Ulcer performance index', 'Corr with SnP 500',
-                                         ## 'Best month', 'Worst month',
+                          names(op) <- c('Total return (pa)', 'Average return (pa)',
+                                         'Sharpe ratio', 'Max drawdown',
+                                         'Ulcer performance index',
+                                         'Corr with SnP 500',
                                          'Best return (pa)', 'Worst return (pa)',
                                          'Hit rate', 'Trades per year')
                           return(op)
