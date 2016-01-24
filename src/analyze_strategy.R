@@ -1,4 +1,4 @@
-rm(list = ls())
+rm(list = ls()); library(xtable)
 ## This script will generate the strategy performance statistics for
 ## analyzing all the strategies.
 ##
@@ -9,9 +9,10 @@ rm(list = ls())
 ## The analysis functions are imported from the
 ## './analyze_strategy_functions.R' script.
 ##
-## The strategy performance dataframe created by this script is used
-## by the ./report_strategy_performance.R script to generate the final
-## pdf report of the strategies.
+## The strategy performance dataframe created by this script is
+## converted to the latex format by xatble package. This table is then
+## manually pasted into '../doc/report_strategy_performance.tex'
+## script to generate the final pdf report of the strategies.
 
                                         # load strategy performance functions
 source('./analyze_strategy_functions.R')
@@ -55,3 +56,4 @@ strat_results <- lapply(X = files,
                         })
 names(strat_results) <- strategy_names
 strat_results <- do.call(rbind, strat_results)
+xtable(strat_results)
