@@ -4,7 +4,7 @@
 made simple.
 
 - Scripts have been created for the strategies mentioned in the month
-  of June.
+  of June. (The link - http://volatilitymadesimple.com/blog/page/2/)
 
 - This folder contains the following folders:
 
